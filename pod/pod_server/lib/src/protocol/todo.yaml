@@ -1,0 +1,9 @@
+### Holds a note with a text written by the user.
+class: Todo
+table: todo
+fields:
+  ### The contents of the table.
+  title: String
+  isCompleted: bool
+  createdAtTime: DateTime
+  description: String

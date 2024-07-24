@@ -10,6 +10,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/example_endpoint.dart' as _i2;
+import '../endpoints/todo_endpoint.dart' as _i3;
+import 'package:pod_server/src/generated/todo.dart' as _i4;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -20,7 +22,13 @@ class Endpoints extends _i1.EndpointDispatch {
           server,
           'example',
           null,
-        )
+        ),
+      'todos': _i3.TodosEndpoint()
+        ..initialize(
+          server,
+          'todos',
+          null,
+        ),
     };
     connectors['example'] = _i1.EndpointConnector(
       name: 'example',
@@ -42,6 +50,30 @@ class Endpoints extends _i1.EndpointDispatch {
               (endpoints['example'] as _i2.ExampleEndpoint).hello(
             session,
             params['name'],
+          ),
+        )
+      },
+    );
+    connectors['todos'] = _i1.EndpointConnector(
+      name: 'todos',
+      endpoint: endpoints['todos']!,
+      methodConnectors: {
+        'createTodo': _i1.MethodConnector(
+          name: 'createTodo',
+          params: {
+            'newTodo': _i1.ParameterDescription(
+              name: 'newTodo',
+              type: _i1.getType<_i4.Todo>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['todos'] as _i3.TodosEndpoint).createTodo(
+            session,
+            params['newTodo'],
           ),
         )
       },
