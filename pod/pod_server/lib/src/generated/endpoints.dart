@@ -23,10 +23,10 @@ class Endpoints extends _i1.EndpointDispatch {
           'example',
           null,
         ),
-      'todos': _i3.TodosEndpoint()
+      'todo': _i3.TodoEndpoint()
         ..initialize(
           server,
-          'todos',
+          'todo',
           null,
         ),
     };
@@ -54,9 +54,9 @@ class Endpoints extends _i1.EndpointDispatch {
         )
       },
     );
-    connectors['todos'] = _i1.EndpointConnector(
-      name: 'todos',
-      endpoint: endpoints['todos']!,
+    connectors['todo'] = _i1.EndpointConnector(
+      name: 'todo',
+      endpoint: endpoints['todo']!,
       methodConnectors: {
         'createTodo': _i1.MethodConnector(
           name: 'createTodo',
@@ -71,7 +71,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['todos'] as _i3.TodosEndpoint).createTodo(
+              (endpoints['todo'] as _i3.TodoEndpoint).createTodo(
             session,
             params['newTodo'],
           ),
