@@ -1,0 +1,13 @@
+class: Location
+table: locations
+managedMigration: true
+fields:
+  type: String
+  name: String
+  state: String
+  parentToChildDistance: String
+  mappedLocationId: String
+  margin: int
+  freight: int
+  updatedAt: DateTime
+

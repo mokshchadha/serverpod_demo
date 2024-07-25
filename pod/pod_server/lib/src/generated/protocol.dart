@@ -12,8 +12,12 @@ library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixe
 import 'package:serverpod/serverpod.dart' as _i1;
 import 'package:serverpod/protocol.dart' as _i2;
 import 'example.dart' as _i3;
-import 'todo.dart' as _i4;
+import 'freights.dart' as _i4;
+import 'locations.dart' as _i5;
+import 'todo.dart' as _i6;
 export 'example.dart';
+export 'freights.dart';
+export 'locations.dart';
 export 'todo.dart';
 
 class Protocol extends _i1.SerializationManagerServer {
@@ -24,6 +28,190 @@ class Protocol extends _i1.SerializationManagerServer {
   static final Protocol _instance = Protocol._();
 
   static final List<_i2.TableDefinition> targetTableDefinitions = [
+    _i2.TableDefinition(
+      name: 'freights',
+      dartName: 'LocationFreights',
+      schema: 'public',
+      module: 'pod',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'freights_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'fromLoc',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'toLoc',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'distance',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 't25',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 't18',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 't5',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 't42',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 't35',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 't30',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 't12',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'createdAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+        ),
+        _i2.ColumnDefinition(
+          name: 'updatedAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+        ),
+      ],
+      foreignKeys: [],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'freights_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        )
+      ],
+      managed: true,
+    ),
+    _i2.TableDefinition(
+      name: 'locations',
+      dartName: 'Location',
+      schema: 'public',
+      module: 'pod',
+      columns: [
+        _i2.ColumnDefinition(
+          name: 'id',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int?',
+          columnDefault: 'nextval(\'locations_id_seq\'::regclass)',
+        ),
+        _i2.ColumnDefinition(
+          name: 'type',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'name',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'state',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'parentToChildDistance',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'mappedLocationId',
+          columnType: _i2.ColumnType.text,
+          isNullable: false,
+          dartType: 'String',
+        ),
+        _i2.ColumnDefinition(
+          name: 'margin',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'freight',
+          columnType: _i2.ColumnType.bigint,
+          isNullable: false,
+          dartType: 'int',
+        ),
+        _i2.ColumnDefinition(
+          name: 'updatedAt',
+          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          isNullable: false,
+          dartType: 'DateTime',
+        ),
+      ],
+      foreignKeys: [],
+      indexes: [
+        _i2.IndexDefinition(
+          indexName: 'locations_pkey',
+          tableSpace: null,
+          elements: [
+            _i2.IndexElementDefinition(
+              type: _i2.IndexElementDefinitionType.column,
+              definition: 'id',
+            )
+          ],
+          type: 'btree',
+          isUnique: true,
+          isPrimary: true,
+        )
+      ],
+      managed: true,
+    ),
     _i2.TableDefinition(
       name: 'todo',
       dartName: 'Todo',
@@ -92,14 +280,26 @@ class Protocol extends _i1.SerializationManagerServer {
     if (t == _i3.Example) {
       return _i3.Example.fromJson(data) as T;
     }
-    if (t == _i4.Todo) {
-      return _i4.Todo.fromJson(data) as T;
+    if (t == _i4.LocationFreights) {
+      return _i4.LocationFreights.fromJson(data) as T;
+    }
+    if (t == _i5.Location) {
+      return _i5.Location.fromJson(data) as T;
+    }
+    if (t == _i6.Todo) {
+      return _i6.Todo.fromJson(data) as T;
     }
     if (t == _i1.getType<_i3.Example?>()) {
       return (data != null ? _i3.Example.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i4.Todo?>()) {
-      return (data != null ? _i4.Todo.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i4.LocationFreights?>()) {
+      return (data != null ? _i4.LocationFreights.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i5.Location?>()) {
+      return (data != null ? _i5.Location.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i6.Todo?>()) {
+      return (data != null ? _i6.Todo.fromJson(data) : null) as T;
     }
     try {
       return _i2.Protocol().deserialize<T>(data, t);
@@ -112,7 +312,13 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data is _i3.Example) {
       return 'Example';
     }
-    if (data is _i4.Todo) {
+    if (data is _i4.LocationFreights) {
+      return 'LocationFreights';
+    }
+    if (data is _i5.Location) {
+      return 'Location';
+    }
+    if (data is _i6.Todo) {
       return 'Todo';
     }
     return super.getClassNameForObject(data);
@@ -123,8 +329,14 @@ class Protocol extends _i1.SerializationManagerServer {
     if (data['className'] == 'Example') {
       return deserialize<_i3.Example>(data['data']);
     }
+    if (data['className'] == 'LocationFreights') {
+      return deserialize<_i4.LocationFreights>(data['data']);
+    }
+    if (data['className'] == 'Location') {
+      return deserialize<_i5.Location>(data['data']);
+    }
     if (data['className'] == 'Todo') {
-      return deserialize<_i4.Todo>(data['data']);
+      return deserialize<_i6.Todo>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
@@ -138,8 +350,12 @@ class Protocol extends _i1.SerializationManagerServer {
       }
     }
     switch (t) {
-      case _i4.Todo:
-        return _i4.Todo.t;
+      case _i4.LocationFreights:
+        return _i4.LocationFreights.t;
+      case _i5.Location:
+        return _i5.Location.t;
+      case _i6.Todo:
+        return _i6.Todo.t;
     }
     return null;
   }

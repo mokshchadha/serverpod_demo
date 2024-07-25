@@ -1,0 +1,16 @@
+class: LocationFreights
+table: freights
+managedMigration: true
+fields:
+  fromLoc: String,
+  toLoc: String,
+  distance: int,
+  t25: int,
+  t18: int,
+  t5: int,
+  t42: int,
+  t35: int,
+  t30: int,
+  t12: int
+  createdAt: DateTime,
+  updatedAt: DateTime
