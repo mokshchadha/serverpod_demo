@@ -11,7 +11,13 @@ library protocol; // ignore_for_file: no_leading_underscores_for_library_prefixe
 
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'example.dart' as _i2;
+import 'freights.dart' as _i3;
+import 'locations.dart' as _i4;
+import 'todo.dart' as _i5;
 export 'example.dart';
+export 'freights.dart';
+export 'locations.dart';
+export 'todo.dart';
 export 'client.dart';
 
 class Protocol extends _i1.SerializationManager {
@@ -30,8 +36,26 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i2.Example) {
       return _i2.Example.fromJson(data) as T;
     }
+    if (t == _i3.LocationFreights) {
+      return _i3.LocationFreights.fromJson(data) as T;
+    }
+    if (t == _i4.Location) {
+      return _i4.Location.fromJson(data) as T;
+    }
+    if (t == _i5.Todo) {
+      return _i5.Todo.fromJson(data) as T;
+    }
     if (t == _i1.getType<_i2.Example?>()) {
       return (data != null ? _i2.Example.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i3.LocationFreights?>()) {
+      return (data != null ? _i3.LocationFreights.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i4.Location?>()) {
+      return (data != null ? _i4.Location.fromJson(data) : null) as T;
+    }
+    if (t == _i1.getType<_i5.Todo?>()) {
+      return (data != null ? _i5.Todo.fromJson(data) : null) as T;
     }
     return super.deserialize<T>(data, t);
   }
@@ -41,6 +65,15 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i2.Example) {
       return 'Example';
     }
+    if (data is _i3.LocationFreights) {
+      return 'LocationFreights';
+    }
+    if (data is _i4.Location) {
+      return 'Location';
+    }
+    if (data is _i5.Todo) {
+      return 'Todo';
+    }
     return super.getClassNameForObject(data);
   }
 
@@ -48,6 +81,15 @@ class Protocol extends _i1.SerializationManager {
   dynamic deserializeByClassName(Map<String, dynamic> data) {
     if (data['className'] == 'Example') {
       return deserialize<_i2.Example>(data['data']);
+    }
+    if (data['className'] == 'LocationFreights') {
+      return deserialize<_i3.LocationFreights>(data['data']);
+    }
+    if (data['className'] == 'Location') {
+      return deserialize<_i4.Location>(data['data']);
+    }
+    if (data['className'] == 'Todo') {
+      return deserialize<_i5.Todo>(data['data']);
     }
     return super.deserializeByClassName(data);
   }
