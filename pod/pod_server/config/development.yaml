@@ -30,9 +30,10 @@ webServer:
 # This is the database setup for your server.
 database:
   host: localhost
-  port: 8090
-  name: pod
-  user: postgres
+  port: 3306
+  name: my_database
+  user: my_user
+  password: my_password
 
 # This is the setup for Redis.
 redis:
