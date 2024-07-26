@@ -94,6 +94,24 @@ class Endpoints extends _i1.EndpointDispatch {
               (endpoints['location'] as _i3.LocationEndpoint)
                   .getLocations(session),
         ),
+        'deleteLocation': _i1.MethodConnector(
+          name: 'deleteLocation',
+          params: {
+            'id': _i1.ParameterDescription(
+              name: 'id',
+              type: _i1.getType<int>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['location'] as _i3.LocationEndpoint).deleteLocation(
+            session,
+            params['id'],
+          ),
+        ),
       },
     );
     connectors['todo'] = _i1.EndpointConnector(

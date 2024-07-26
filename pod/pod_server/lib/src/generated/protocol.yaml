@@ -3,5 +3,6 @@ example:
 location:
   - createLocation:
   - getLocations:
+  - deleteLocation:
 todo:
   - createTodo:

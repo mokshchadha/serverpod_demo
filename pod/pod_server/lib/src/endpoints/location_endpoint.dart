@@ -11,4 +11,10 @@ class LocationEndpoint extends Endpoint {
     final locations = await Location.db.find(session);
     return locations;
   }
+
+  Future<void> deleteLocation(Session session, int id) async {
+    final loc = await Location.db.findById(session, id);
+    if (loc != null) await Location.db.deleteRow(session, loc);
+    return;
+  }
 }
