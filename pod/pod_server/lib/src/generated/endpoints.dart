@@ -10,8 +10,10 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod/serverpod.dart' as _i1;
 import '../endpoints/example_endpoint.dart' as _i2;
-import '../endpoints/todo_endpoint.dart' as _i3;
-import 'package:pod_server/src/generated/todo.dart' as _i4;
+import '../endpoints/location_endpoint.dart' as _i3;
+import '../endpoints/todo_endpoint.dart' as _i4;
+import 'package:pod_server/src/generated/locations.dart' as _i5;
+import 'package:pod_server/src/generated/todo.dart' as _i6;
 
 class Endpoints extends _i1.EndpointDispatch {
   @override
@@ -23,7 +25,13 @@ class Endpoints extends _i1.EndpointDispatch {
           'example',
           null,
         ),
-      'todo': _i3.TodoEndpoint()
+      'location': _i3.LocationEndpoint()
+        ..initialize(
+          server,
+          'location',
+          null,
+        ),
+      'todo': _i4.TodoEndpoint()
         ..initialize(
           server,
           'todo',
@@ -54,6 +62,40 @@ class Endpoints extends _i1.EndpointDispatch {
         )
       },
     );
+    connectors['location'] = _i1.EndpointConnector(
+      name: 'location',
+      endpoint: endpoints['location']!,
+      methodConnectors: {
+        'createLocation': _i1.MethodConnector(
+          name: 'createLocation',
+          params: {
+            'newLocation': _i1.ParameterDescription(
+              name: 'newLocation',
+              type: _i1.getType<_i5.Location>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['location'] as _i3.LocationEndpoint).createLocation(
+            session,
+            params['newLocation'],
+          ),
+        ),
+        'getLocations': _i1.MethodConnector(
+          name: 'getLocations',
+          params: {},
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['location'] as _i3.LocationEndpoint)
+                  .getLocations(session),
+        ),
+      },
+    );
     connectors['todo'] = _i1.EndpointConnector(
       name: 'todo',
       endpoint: endpoints['todo']!,
@@ -63,7 +105,7 @@ class Endpoints extends _i1.EndpointDispatch {
           params: {
             'newTodo': _i1.ParameterDescription(
               name: 'newTodo',
-              type: _i1.getType<_i4.Todo>(),
+              type: _i1.getType<_i6.Todo>(),
               nullable: false,
             )
           },
@@ -71,7 +113,7 @@ class Endpoints extends _i1.EndpointDispatch {
             _i1.Session session,
             Map<String, dynamic> params,
           ) async =>
-              (endpoints['todo'] as _i3.TodoEndpoint).createTodo(
+              (endpoints['todo'] as _i4.TodoEndpoint).createTodo(
             session,
             params['newTodo'],
           ),

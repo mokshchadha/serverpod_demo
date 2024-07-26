@@ -1,4 +1,7 @@
 example:
   - hello:
+location:
+  - createLocation:
+  - getLocations:
 todo:
   - createTodo:
