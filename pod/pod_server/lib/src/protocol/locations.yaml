@@ -11,3 +11,7 @@ fields:
   freight: int
   updatedAt: DateTime
 
+indexes:
+  primary:
+    fields: name
+

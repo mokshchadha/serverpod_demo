@@ -2,6 +2,7 @@ example:
   - hello:
 location:
   - createLocation:
+  - createEmptyFreightsForLocation:
   - getLocations:
   - deleteLocation:
 todo:

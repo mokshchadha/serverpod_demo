@@ -84,6 +84,25 @@ class Endpoints extends _i1.EndpointDispatch {
             params['newLocation'],
           ),
         ),
+        'createEmptyFreightsForLocation': _i1.MethodConnector(
+          name: 'createEmptyFreightsForLocation',
+          params: {
+            'loc': _i1.ParameterDescription(
+              name: 'loc',
+              type: _i1.getType<_i5.Location>(),
+              nullable: false,
+            )
+          },
+          call: (
+            _i1.Session session,
+            Map<String, dynamic> params,
+          ) async =>
+              (endpoints['location'] as _i3.LocationEndpoint)
+                  .createEmptyFreightsForLocation(
+            session,
+            params['loc'],
+          ),
+        ),
         'getLocations': _i1.MethodConnector(
           name: 'getLocations',
           params: {},
