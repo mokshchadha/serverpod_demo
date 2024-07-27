@@ -14,6 +14,8 @@ import 'example.dart' as _i2;
 import 'freights.dart' as _i3;
 import 'locations.dart' as _i4;
 import 'todo.dart' as _i5;
+import 'package:pod_client/src/protocol/freights.dart' as _i6;
+import 'package:pod_client/src/protocol/locations.dart' as _i7;
 export 'example.dart';
 export 'freights.dart';
 export 'locations.dart';
@@ -56,6 +58,15 @@ class Protocol extends _i1.SerializationManager {
     }
     if (t == _i1.getType<_i5.Todo?>()) {
       return (data != null ? _i5.Todo.fromJson(data) : null) as T;
+    }
+    if (t == List<_i6.LocationFreights>) {
+      return (data as List)
+          .map((e) => deserialize<_i6.LocationFreights>(e))
+          .toList() as dynamic;
+    }
+    if (t == List<_i7.Location>) {
+      return (data as List).map((e) => deserialize<_i7.Location>(e)).toList()
+          as dynamic;
     }
     return super.deserialize<T>(data, t);
   }
