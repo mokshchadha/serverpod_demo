@@ -9,3 +9,6 @@ after that u can run this in terminal to write sql commands in maria db
 
 ### setup sever pod
 follow getting started page for serverpod :- https://docs.serverpod.dev/get-started
+
+### Running server 
+`   dart bin/main.dart --apply-migrations  `
