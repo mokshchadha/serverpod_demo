@@ -1,16 +1,19 @@
-version: '3.7'
+version: '3.8'
 
 services:
-  postgres:
-    image: postgres:14.1
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    container_name: timescaledb
     ports:
-      - '8090:5432'
+      - "8090:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_DB: pod
       POSTGRES_PASSWORD: "_WLy_lbUbtWiC7Yzs-lA6SWfrirmOmlI"
+      POSTGRES_DB: pod
     volumes:
       - pod_data:/var/lib/postgresql/data
+    restart: always
+
   redis:
     image: redis:6.2.6
     ports:
@@ -18,5 +21,6 @@ services:
     command: redis-server --requirepass "twEiG-n3URj_kNqvjSTstPan_Vbdkoqt"
     environment:
       - REDIS_REPLICATION_MODE=master
+
 volumes:
   pod_data:
